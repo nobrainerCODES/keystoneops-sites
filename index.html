@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Keystone Ops: missed-call text back for local HVAC shops</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Keystone Ops texts your customers back when you miss their call, so local HVAC and plumbing shops stop losing jobs. Free 30-day pilot for local shops.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 28 28%27%3E%3Cpath d=%27M2 4H26L19.5 24H8.5Z%27 fill=%27%23D6246E%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&amp;family=Public+Sans:wght@400;500;600&amp;display=swap">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FFFFFF}
+a{color:#0A0A0A}a:hover{color:#D6246E}
+.hl{background:linear-gradient(#D6246E,#D6246E) no-repeat 0 92%/100% .14em;padding-bottom:2px}
+.btn{transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.14)}
+.ic-ring{display:none}.ic-missed{display:inline-flex}
+.typing{display:none;align-self:flex-start;gap:4px;padding:12px 14px;border-radius:18px 18px 18px 6px;background:#EFEFEF}
+.typing.right{align-self:flex-end;background:#0A0A0A;border-radius:18px 18px 6px 18px}
+.typing i{display:block;width:6px;height:6px;border-radius:50%;background:#8A8A8A;animation:dot 1s infinite}
+.typing.right i{background:#A3A3A3}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,80%,100%{opacity:.35;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.95)}to{opacity:1;transform:none}}
+@keyframes ring{0%,100%{transform:rotate(0)}20%{transform:rotate(-16deg)}40%{transform:rotate(16deg)}60%{transform:rotate(-10deg)}80%{transform:rotate(10deg)}}
+.anim .msg:not(.on),.anim .ts:not(.on){display:none}
+.anim .typing.on{display:flex}
+.anim .on{animation:pop .35s ease-out both}
+.anim .callrow.ringing .ic-ring{display:inline-flex;animation:ring .5s ease-in-out infinite}
+.anim .callrow.ringing .ic-missed{display:none}
+.anim .callrow.ringing #call-text{font-weight:600;color:#D6246E}
+.js-reveal .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.js-reveal .reveal.in{opacity:1;transform:none}
+.js-reveal .reveal:nth-child(2){transition-delay:.12s}
+.js-reveal .reveal:nth-child(3){transition-delay:.24s}
+.js-reveal .hl{background-size:0% .14em;transition:background-size .9s ease .5s}
+.js-reveal .in .hl{background-size:100% .14em}
+
+</style>
+</head>
+<body>
+<div id="top" style="font-family: 'Public Sans', system-ui, sans-serif; color: #0A0A0A; background: #FFFFFF; line-height: 1.55; font-size: 17px">
+
+<header style="border-bottom: 1px solid #E5E5E5">
+<nav aria-label="Main" style="max-width: 1120px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
+<a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #0A0A0A; min-height: 44px">
+<svg width="26" height="26" viewBox="0 0 28 28" aria-hidden="true"><path d="M2 4H26L19.5 24H8.5Z" fill="#D6246E"></path></svg>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -0.01em">Keystone Ops</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; font-size: 15px; font-weight: 500">
+<a href="#how" style="text-decoration: none; padding: 12px 0">How it works</a>
+<a href="#pilot" style="text-decoration: none; padding: 12px 0">Free pilot</a>
+<a href="#about" style="text-decoration: none; padding: 12px 0">About</a>
+<a href="#contact" style="text-decoration: none; background: #0A0A0A; color: #FFFFFF; padding: 12px 18px; border-radius: 8px; font-weight: 600">Talk to me</a>
+</div>
+</nav>
+</header>
+
+<section style="max-width: 1120px; margin: 0 auto; padding: 72px 24px 88px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div class="reveal" style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #D6246E">For local HVAC and plumbing shops</p>
+<h1 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(42px, 5.6vw, 74px); line-height: 1.02; letter-spacing: -0.025em">Stop losing jobs to <span class="hl">missed calls.</span></h1>
+<p style="margin: 0; font-size: 20px; color: #525252; max-width: 32em">You can't answer the phone from a crawl space. When you miss a call, Keystone Ops texts the customer back right away. They wait for you instead of calling the next shop.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 8px">
+<a class="btn" href="#pilot" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border-radius: 10px; background: #D6246E; color: #FFFFFF; font-weight: 600; text-decoration: none">Get a free 30-day pilot</a>
+<a class="btn" href="#how" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border-radius: 10px; border: 1.5px solid #0A0A0A; color: #0A0A0A; font-weight: 600; text-decoration: none; box-sizing: border-box">See how it works</a>
+</div>
+</div>
+
+<figure class="reveal" style="flex: 0 1 320px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px">
+<div style="width: 300px; max-width: 100%; box-sizing: border-box; background: #0A0A0A; border-radius: 44px; padding: 12px; box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18)">
+<div style="background: #FFFFFF; border-radius: 34px; overflow: hidden; display: flex; flex-direction: column">
+<div style="padding: 22px 18px 14px; border-bottom: 1px solid #E5E5E5; display: flex; flex-direction: column; align-items: center; gap: 6px">
+<div style="width: 44px; height: 44px; border-radius: 50%; background: #EFEFEF; display: flex; align-items: center; justify-content: center; font-family: Archivo, sans-serif; font-weight: 700; font-size: 15px; color: #0A0A0A">YS</div>
+<div style="font-size: 14px; font-weight: 600">[Your Shop] Heating &amp; Air</div>
+</div>
+<div id="demo-chat" style="padding: 18px 14px 24px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.4; min-height: 390px; box-sizing: border-box">
+<div class="callrow" style="align-self: center; display: flex; align-items: center; gap: 6px; font-size: 12px; color: #525252; padding-bottom: 4px">
+<span class="ic-ring"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6246E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>
+<span class="ic-missed"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6246E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 16 8"></path><path d="m16 2 6 6"></path><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>
+<span id="call-text">No answer · 10:42 AM</span>
+</div>
+<div class="typing" data-step="t1" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="msg" data-step="m1" style="align-self: flex-start; max-width: 84%; background: #EFEFEF; color: #0A0A0A; padding: 10px 14px; border-radius: 18px 18px 18px 6px">Hi, this is [Your Shop]. Sorry we missed you, we're out on a job. What do you need help with? We'll call you back soon.</div>
+<div class="ts" data-step="s1" style="align-self: flex-start; font-size: 11px; color: #525252; padding-left: 6px">10:42 AM</div>
+<div class="typing right" data-step="t2" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="msg" data-step="m2" style="align-self: flex-end; max-width: 84%; background: #0A0A0A; color: #FFFFFF; padding: 10px 14px; border-radius: 18px 18px 6px 18px">No heat upstairs. Can someone come today?</div>
+<div class="ts" data-step="s2" style="align-self: flex-end; font-size: 11px; color: #525252; padding-right: 6px">10:43 AM</div>
+<div class="typing" data-step="t3" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="msg" data-step="m3" style="align-self: flex-start; max-width: 84%; background: #EFEFEF; color: #0A0A0A; padding: 10px 14px; border-radius: 18px 18px 18px 6px">Got it. We'll call you within the hour to set a time.</div>
+</div>
+</div>
+</div>
+<figcaption style="font-size: 14px; color: #525252; text-align: center; max-width: 280px">What your customer sees, seconds after you miss their call.</figcaption>
+</figure>
+</section>
+
+<section style="background: #F5F5F5">
+<div style="max-width: 1120px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 36px">
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; letter-spacing: -0.02em; max-width: 18em">The phone always rings when you're busy.</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<div class="reveal" style="flex: 1 1 280px; min-width: 0; background: #FFFFFF; border: 1px solid #E5E5E5; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 700; font-size: 21px">You're on a job</h3>
+<p style="margin: 0; color: #525252">Your hands are full. The call goes to voicemail.</p>
+</div>
+<div class="reveal" style="flex: 1 1 280px; min-width: 0; background: #FFFFFF; border: 1px solid #E5E5E5; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 700; font-size: 21px">They don't leave a message</h3>
+<p style="margin: 0; color: #525252">A lot of people just hang up and call the next shop on Google.</p>
+</div>
+<div class="reveal" style="flex: 1 1 280px; min-width: 0; background: #FFFFFF; border: 1px solid #E5E5E5; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 700; font-size: 21px">Winter doesn't wait</h3>
+<p style="margin: 0; color: #525252">When the heat's out, the customer goes with whoever gets back to them first.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="how" style="max-width: 1120px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; letter-spacing: -0.02em">How it works</h2>
+<p style="margin: 0; font-size: 19px; color: #525252">Three steps. Nothing new for you to learn.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 36px">
+<div class="reveal" style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 52px; line-height: 1; color: #D6246E">1</span>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 700; font-size: 22px">A customer calls and you can't pick up.</h3>
+<p style="margin: 0; color: #525252">You're under a house, up on a roof, or driving between jobs.</p>
+</div>
+<div class="reveal" style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 52px; line-height: 1; color: #D6246E">2</span>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 700; font-size: 22px">They get a text from your shop right away.</h3>
+<p style="margin: 0; color: #525252">A friendly message asks what they need, so they know you got the call.</p>
+</div>
+<div class="reveal" style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 52px; line-height: 1; color: #D6246E">3</span>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 700; font-size: 22px">You call back when you're free.</h3>
+<p style="margin: 0; color: #525252">They already told you what's wrong. The job is still yours.</p>
+</div>
+</div>
+<div style="border-top: 1px solid #E5E5E5; padding-top: 32px; display: flex; flex-wrap: wrap; gap: 16px 40px">
+<div style="display: flex; align-items: center; gap: 10px; font-weight: 600">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D6246E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+<span>Missed-call text back</span>
+</div>
+<div style="display: flex; align-items: center; gap: 10px; font-weight: 600">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D6246E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+<span>Fast replies to quote requests</span>
+</div>
+<div style="display: flex; align-items: center; gap: 10px; font-weight: 600">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D6246E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+<span>I set it all up for you</span>
+</div>
+</div>
+</section>
+
+<section id="pilot" style="background: #0A0A0A; color: #FFFFFF">
+<div style="max-width: 1120px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 48px">
+<div class="reveal" style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #D6246E">Now taking 2 pilot shops</p>
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 52px); line-height: 1.05; letter-spacing: -0.02em">Try it free for 30 days.</h2>
+<p style="margin: 0; font-size: 19px; color: #D4D4D4; max-width: 30em">I'm starting with two local shops this winter. I set everything up. If it doesn't bring you work, you walk away. No contract.</p>
+<div style="padding-top: 8px">
+<a class="btn" href="#contact" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border-radius: 10px; background: #FFFFFF; color: #0A0A0A; font-weight: 600; text-decoration: none">Claim a pilot spot</a>
+</div>
+</div>
+<div class="reveal" style="flex: 1 1 340px; min-width: 0; background: #FFFFFF; color: #0A0A0A; border-radius: 14px; padding: 32px; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 700; font-size: 20px">What you get</h3>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: #333333">
+<li>Setup done for you</li>
+<li>30 days free, no contract</li>
+<li>A direct line to me, not a call center</li>
+</ul>
+</div>
+<div style="border-top: 1px solid #E5E5E5; padding-top: 22px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 700; font-size: 20px">What I ask</h3>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: #333333">
+<li>Honest feedback</li>
+<li>If it works, a short review</li>
+<li>An intro to two other shop owners you trust</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="about" style="max-width: 1120px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
+<div class="reveal" style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; letter-spacing: -0.02em">Hi, I'm Shraman.</h2>
+<p style="margin: 0; font-size: 18px; color: #333333; max-width: 34em">I'm a business student at Penn State. I started Keystone Ops because local shops lose good work just because the phone rang at a bad time.</p>
+<p style="margin: 0; font-size: 18px; color: #333333; max-width: 34em">I'm starting small on purpose. A few shops, done right, with me as your direct contact.</p>
+</div>
+</section>
+
+<section id="contact" style="background: #F5F5F5">
+<div style="max-width: 1120px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 20px; align-items: flex-start">
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 52px); line-height: 1.05; letter-spacing: -0.02em">Let's talk.</h2>
+<p style="margin: 0; font-size: 19px; color: #525252; max-width: 30em">Call or text me. I'll get back to you the same day.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 8px">
+<a class="btn" href="tel:+15512525209" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 10px; background: #D6246E; color: #FFFFFF; font-weight: 600; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+<span>(551) 252-5209</span>
+</a>
+<a class="btn" href="mailto:shraman@keystoneops.org" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 10px; border: 1.5px solid #0A0A0A; color: #0A0A0A; font-weight: 600; text-decoration: none; box-sizing: border-box">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
+<span>shraman@keystoneops.org</span>
+</a>
+</div>
+</div>
+</section>
+
+<footer style="border-top: 1px solid #E5E5E5">
+<div style="max-width: 1120px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 14px; color: #525252">
+<span>© 2026 Keystone Ops · keystoneops.org</span>
+</div>
+</footer>
+
+</div>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  var root = document.documentElement;
+  if ('IntersectionObserver' in window) {
+    root.classList.add('js-reveal');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  }
+  var chat = document.getElementById('demo-chat');
+  if (!chat) return;
+  chat.classList.add('anim');
+  var row = chat.querySelector('.callrow'), label = document.getElementById('call-text');
+  function el(k){ return chat.querySelector('[data-step="' + k + '"]'); }
+  function on(k){ el(k).classList.add('on'); }
+  function off(k){ el(k).classList.remove('on'); }
+  var timeline = [
+    [1800, function(){ row.classList.remove('ringing'); label.textContent = 'No answer \u00b7 10:42 AM'; }],
+    [2400, function(){ on('t1'); }],
+    [3500, function(){ off('t1'); on('m1'); on('s1'); }],
+    [5000, function(){ on('t2'); }],
+    [6100, function(){ off('t2'); on('m2'); on('s2'); }],
+    [7400, function(){ on('t3'); }],
+    [8500, function(){ off('t3'); on('m3'); }]
+  ];
+  function run(){
+    chat.querySelectorAll('[data-step]').forEach(function(n){ n.classList.remove('on'); });
+    row.classList.add('ringing'); label.textContent = 'Calling...';
+    timeline.forEach(function(t){ setTimeout(t[1], t[0]); });
+    setTimeout(run, 14000);
+  }
+  run();
+})();
+</script>
+</body>
+</html>
